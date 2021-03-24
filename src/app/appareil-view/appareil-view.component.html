@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Mes appareils</h2>
+
+      <!-- A REVOIR A PROPOS DE L ERREUR OVERLOAD : error TS2769: No overload matches this call.-->
+      <!-- <p> Mis a jour: {{ lastUpdate | async | date: 'yMMMMEEEEd' | uppercase }}</p> -->
+      <!-- A REVOIR A PROPOS DE L ERREUR OVERLOAD -->
+
+      <ul class="list-group">
+        <app-appareil *ngFor="let appareil of appareils; let i = index" [appareilName]="appareil.name" [appareilStatus]="appareil.status" [indexOfAppareil]="i"></app-appareil>
+      </ul>
+      <button class="btn btn-success" (click)="onAllumer()">Tout allumer</button>
+      <button class="btn btn-danger" (click)="onEteindre()"> Tout éteindre </button>
+    </div>
+  </div>
+</div>
