@@ -7,32 +7,21 @@ import { AppareilService } from '../services/appareil.service';
   styleUrls: ['./appareil-view.component.scss']
 })
 export class AppareilViewComponent implements OnInit {
-  //appareils move in appareil.service.ts
+
   appareils: any[];
 
-  isAuth = false;
-
-  // Pipes date
-  lastUpdate = new Promise(
-    (resolve, reject) => {
-      const date = new Date();
-      setTimeout(() => {
+  lastUpdate = new Promise((resolve, reject) => {
+    const date = new Date();
+    setTimeout(
+      () => {
         resolve(date);
-        }, 2000
-      );
-    }
-  )
+      }, 2000
+    );
+  });
 
-
-  constructor(private appareilService: AppareilService) {
-    // setTimeout(() => {
-    //   this.isAuth = true;
-    // }, 4000
-    // );
-  }
+  constructor(private appareilService: AppareilService) { }
 
   ngOnInit() {
-    //create services
     this.appareils = this.appareilService.appareils;
   }
 
@@ -41,10 +30,12 @@ export class AppareilViewComponent implements OnInit {
   }
 
   onEteindre() {
-    if (confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
+    if(confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
       this.appareilService.switchOffAll();
+    } else {
+      return null;
     }
-    return null
   }
-
+/*The comlaint is that the first if(){} is missing an else{} block with a return statement. You can disable this behaviour in a tsconfig file setting:
+ "noImplicitReturns": false, */
 }
