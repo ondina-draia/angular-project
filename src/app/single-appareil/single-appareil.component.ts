@@ -12,11 +12,12 @@ export class SingleAppareilComponent implements OnInit {
   name: string = 'Appareil';
   status: string = 'Statut';
 
-  constructor(private AppareilService: AppareilService,
+  constructor(private appareilService: AppareilService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.name = this.route.snapshot.params['id'];
+    const id = this.route.snapshot.params['id'];
+    this.name = this.appareilService.getAppareilById(+id)!.name; //J'ai rajouté un "!". Comme on est certain qu'ils ne peuvent pas être null:
+    this.status = this.appareilService.getAppareilById(+id)!.status; //le + c'est pour le cast en tant que nombre 
   }
-
 }
