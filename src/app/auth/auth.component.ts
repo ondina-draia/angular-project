@@ -8,7 +8,7 @@ import { AuthService } from "../services/auth.services";
 })
 export class AuthComponent implements OnInit {
 
-  authStatus: boolean;
+  authStatus!: boolean;
 
   constructor(private authService : AuthService, private router: Router) { }
 

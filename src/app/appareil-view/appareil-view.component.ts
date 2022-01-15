@@ -8,9 +8,10 @@ import { AppareilService } from '../services/appareil.service';
 })
 export class AppareilViewComponent implements OnInit {
 
-  appareils: any[];
+  appareils!: any[];
 
-  lastUpdate = new Promise((resolve, reject) => {
+  //typage de la variable lastUpdate pour éviter l'erreur "Overload" (error TS2769)
+  lastUpdate: Promise<Date> = new Promise((resolve, reject) => {
     const date = new Date();
     setTimeout(
       () => {
